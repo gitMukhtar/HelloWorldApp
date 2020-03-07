@@ -58,11 +58,11 @@ public class BirthDayWishController {
 			if (days == 0)
 				msg = "Happy Birthday " + birthdayWish.get(0).getName();
 			else
-				msg = "Hello " + birthdayWish.get(0).getName() + ", your next birth is after " + days + "Days";
+				msg = "Hello " + birthdayWish.get(0).getName() + ", your next birth is after " + days + " Days";
 			if (days < 0) {
 				birthday = LocalDate.of(today.getYear() + 1, Integer.parseInt(bDate[1]), Integer.parseInt(bDate[2]));
 				msg = "Hello " + birthdayWish.get(0).getName() + ", your next birth is after "
-						+ ChronoUnit.DAYS.between(today, birthday) + "Days" ;
+						+ ChronoUnit.DAYS.between(today, birthday) + " Days" ;
 				;
 			}
 		} else
