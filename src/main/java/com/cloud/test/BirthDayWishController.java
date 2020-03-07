@@ -24,7 +24,7 @@ public class BirthDayWishController {
 	@PutMapping("/hello/{nameOfPerson}")
 	private Object saveName(@RequestBody BirthdayWish birthdayWish, @PathVariable("nameOfPerson") String nameOfPerson) {
 		if (!validtaeString(nameOfPerson)) {
-			return "Ony";
+			return "Only characters are allowed";
 		}
 		try {
 			birthdayWish.setName(nameOfPerson);
@@ -33,7 +33,7 @@ public class BirthDayWishController {
 			Date today = sdf.parse(sdf.format(new Date()));
 			if (InputDate.after(today)) {
 				birthdayWish.setDateofBirth("");
-				return "InputDate is after today";
+				return "Please enter the current date or before";
 			}
 			birthdayService.saveOrUpdate(birthdayWish);
 		} catch (ParseException e) {
@@ -58,11 +58,11 @@ public class BirthDayWishController {
 			if (days == 0)
 				msg = "Happy Birthday " + birthdayWish.get(0).getName();
 			else
-				msg = "Hello " + birthdayWish.get(0).getName() + ", your next birth is on after " + days;
+				msg = "Hello " + birthdayWish.get(0).getName() + ", your next birth is after " + days + "Days";
 			if (days < 0) {
 				birthday = LocalDate.of(today.getYear() + 1, Integer.parseInt(bDate[1]), Integer.parseInt(bDate[2]));
-				msg = "Hello " + birthdayWish.get(0).getName() + ", your next birth is on after "
-						+ ChronoUnit.DAYS.between(today, birthday);
+				msg = "Hello " + birthdayWish.get(0).getName() + ", your next birth is after "
+						+ ChronoUnit.DAYS.between(today, birthday) + "Days" ;
 				;
 			}
 		} else
