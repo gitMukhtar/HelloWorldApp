@@ -66,7 +66,7 @@ public class BirthDayWishController {
 				;
 			}
 		} else
-			msg = " OOPS, Record Not Found";
+			msg = " Oops, I couldn't find you";
 		return msg;
 	}
 
